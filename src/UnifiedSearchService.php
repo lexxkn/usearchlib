@@ -226,6 +226,7 @@ class UnifiedSearchService extends Service
     public const SEARCH_OPTION_CONSIDER_CROSSES = 'considerCrosses';
     public const SEARCH_OPTION_IN_STOCK = 'inStock';
     public const SEARCH_OPTION_WITH_OFFERS = 'withOffers';
+    public const SEARCH_TAGS_BY_AND = 'tagsByAnd';
 
     /**
      * Search details with free-form (natural language) full text query.If indexedAutoId provided search only applicable details.
@@ -254,9 +255,10 @@ class UnifiedSearchService extends Service
         $searchParams = [
             'limit' => $limit,
             'skip' => $skip,
-            'considerCrosses' => in_array(self::SEARCH_OPTION_CONSIDER_CROSSES, $options),
-            'inStock' => in_array(self::SEARCH_OPTION_IN_STOCK, $options),
-            'withOffers' => in_array(self::SEARCH_OPTION_WITH_OFFERS, $options),
+            'considerCrosses' => in_array(self::SEARCH_OPTION_CONSIDER_CROSSES, $options) ? 'true' : 'false',
+            'inStock' => in_array(self::SEARCH_OPTION_IN_STOCK, $options) ? 'true' : 'false',
+            'withOffers' => in_array(self::SEARCH_OPTION_WITH_OFFERS, $options) ? 'true' : 'false',
+            'tagsByAnd' => in_array(self::SEARCH_TAGS_BY_AND, $options) ? 'true' : 'false',
             'query' => $query
         ];
 

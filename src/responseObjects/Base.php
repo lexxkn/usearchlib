@@ -55,7 +55,7 @@ class Base
      * @return mixed
      * @throws Exception
      */
-    protected function _getValue($type, $value)
+    protected function _getValue($type, $value, $field)
     {
         switch ($type) {
             case 'string':
@@ -82,7 +82,7 @@ class Base
                     $type = 'Legeartis\\UnifiedSearch\\responseObjects\\' . $type;
                     return new $type($value);
                 } else {
-                    throw new Exception('Unable to map ' . $type . ' to class ' . get_class($this));
+                    throw new Exception('Unable to map ' . $type . ' to class ' . get_class($this) . ' field '.$field);
                 }
         }
     }
